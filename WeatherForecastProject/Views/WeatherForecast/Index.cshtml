@@ -1,0 +1,40 @@
+﻿@using WeatherForecastProject.Models
+
+<h2>Weather Forecast</h2>
+
+<h4 class="long-title">Port Louis, Mauritius</h4>
+
+@(Html.DevExtreme().DataGrid<DailyForecastModel>()
+    .ShowBorders(true)
+    .DataSource(_ => _.Mvc().Controller("WeatherForecastWebAPI").LoadAction("LoadWeatherForecast").Key("DateTime"))
+    .Columns(_ => {
+        _.AddFor(_ => _.DateTime)
+            .Caption("Date & Time");
+        _.AddFor(_ => _.TempMin)
+            .Caption("Min Temp °C");
+        _.AddFor(_ => _.TempMax)
+            .Caption("Max Temp °C");
+        _.AddFor(_ => _.PrecipProb)
+            .Caption("Probability of Rain %");
+        _.AddFor(_ => _.Windspeed)
+            .Caption("Wind Speed km/h");
+        _.AddFor(_ => _.Cloudcover)
+            .Caption("Cloud Cover %");
+        _.AddFor(_ => _.Sunrise);
+        _.AddFor(_ => _.Sunset);
+    })
+    .Paging(_ => _.PageSize(10))
+    .FilterRow(_ => _.Visible(true))
+    .HeaderFilter(_ => _.Visible(true))
+
+)
+
+@*        _.AddFor(_ => _.DateTime);
+        _.AddFor(_ => _.TempMin);
+        _.AddFor(_ => _.TempMax);
+        _.AddFor(_ => _.PrecipProb);
+        _.AddFor(_ => _.Windspeed);
+        _.AddFor(_ => _.Cloudcover);
+        _.AddFor(_ => _.Sunrise);
+        _.AddFor(_ => _.Sunset);
+        _.AddFor(_ => _.Moonphase);*@
