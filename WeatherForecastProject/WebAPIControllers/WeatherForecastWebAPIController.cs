@@ -65,14 +65,13 @@
                         return BadRequest(ModelState.Values.SelectMany(_ => _.Errors.Select(error => error.ErrorMessage)));
                     }
 
+                    memoryCache.Set("weather", forecast, TimeSpan.FromMinutes(1));
                 }
                 catch (Exception ex) 
                 {
                     errorString = $"There was an error getting the forecast: { ex.Message }";
                     return BadRequest(errorString);
                 }
-                
-                memoryCache.Set("weather", forecast, TimeSpan.FromMinutes(1));
             }
 
             object result = await Task.Run(() => DataSourceLoader.Load(forecast.Days, loadOptions));
