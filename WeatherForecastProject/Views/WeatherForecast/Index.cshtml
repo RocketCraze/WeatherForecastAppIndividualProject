@@ -2,18 +2,23 @@
 
 <h2>Weather Forecast</h2>
 
-<h4 class="long-title">Port Louis, Mauritius</h4>
+<div class="long-title">
+    <h4>Port Louis, Mauritius</h4>
+</div>
 
-@(Html.DevExtreme().DataGrid<DailyForecastModel>()
+
+@(Html.DevExtreme().DataGrid<DailyForecast>()
     .ShowBorders(true)
     .DataSource(_ => _.Mvc().Controller("WeatherForecastWebAPI").LoadAction("LoadWeatherForecast").Key("DateTime"))
     .Columns(_ => {
         _.AddFor(_ => _.DateTime)
-            .Caption("Date & Time");
+            .Caption("Date");
         _.AddFor(_ => _.TempMin)
             .Caption("Min Temp °C");
         _.AddFor(_ => _.TempMax)
             .Caption("Max Temp °C");
+        _.AddFor(_ => _.Humidity)
+            .Caption("Humidity %");
         _.AddFor(_ => _.PrecipProb)
             .Caption("Probability of Rain %");
         _.AddFor(_ => _.Windspeed)

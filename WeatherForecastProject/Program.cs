@@ -1,5 +1,10 @@
 namespace WeatherForecastProject
-{ 
+{
+    using FluentValidation;
+
+    using WeatherForecastProject.Models;
+    using WeatherForecastProject.Validators;
+
     public static class Program
     {
         private static void Main(string[] args)
@@ -10,7 +15,11 @@ namespace WeatherForecastProject
             builder.Services
             .AddControllersWithViews()
             .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+            
             builder.Services.AddHttpClient();
+
+            builder.Services.AddScoped<IValidator<WeatherForecastModel>, WeatherForecastValidator>();
+            builder.Services.AddScoped<IValidator<DailyForecast>, DailyForecastValidator>();
 
             var app = builder.Build();
 

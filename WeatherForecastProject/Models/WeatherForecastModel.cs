@@ -6,6 +6,6 @@
 
         public string Timezone { get; set; }
 
-        public DailyForecastModel[] Days { get; set; }
+        public DailyForecast[] Days { get; set; }
     }
 }
