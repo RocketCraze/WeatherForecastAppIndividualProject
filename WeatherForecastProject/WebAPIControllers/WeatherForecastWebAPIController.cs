@@ -78,36 +78,6 @@
             object result = await Task.Run(() => DataSourceLoader.Load(forecast.Days, loadOptions));
 
             return result;
-
-            //var request = new HttpRequestMessage(HttpMethod.Get,
-            //    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Port%20Louis?unitGroup=metric&include=days&key=5UDR5STWCM6G5PS6LQ9QSBBLT&contentType=json");
-
-
-
-            //HttpResponseMessage response = await client.SendAsync(request);
-
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    forecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
-
-            //    errorString = null;
-
-            //    foreach (var day in forecast.Days)
-            //    {
-            //        var dailyValidatorResult = dailyValidator.Validate(day);
-            //        if (!dailyValidatorResult.IsValid)
-            //        {
-            //            dailyValidatorResult.AddToModelState(ModelState);
-            //            return BadRequest(ModelState.Values.SelectMany(_ => _.Errors.Select(error => error.ErrorMessage)));
-            //        }
-            //    }                
-
-            //    var validatorResult = validator.Validate(forecast);
-            //    if (!validatorResult.IsValid)
-            //    {
-            //        validatorResult.AddToModelState(ModelState);
-            //        return BadRequest(ModelState.Values.SelectMany(_ => _.Errors.Select(error => error.ErrorMessage)));
-            //    }
         }
     }
 }
