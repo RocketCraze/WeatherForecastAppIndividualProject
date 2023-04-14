@@ -21,6 +21,9 @@ namespace WeatherForecastProject
             builder.Services.AddScoped<IValidator<WeatherForecastModel>, WeatherForecastValidator>();
             builder.Services.AddScoped<IValidator<DailyForecast>, DailyForecastValidator>();
 
+            //builder.Services.AddTransient<WeatherForecastModel>();
+            builder.Services.AddMemoryCache();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
